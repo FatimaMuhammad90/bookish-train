@@ -9,25 +9,24 @@ The API supports the basic CRUD operations:
     Update tasks
     Delete tasks
 
-The current implementation stores tasks in memory, so the data is reset whenever the server restarts.
 
-Installation & Running
+## Installation & Running
 
-Install the required dependencies:
+### Install the required dependencies:
 
- `pip install fastapi uvicorn`
+     `pip install fastapi uvicorn`
 
 Run the API with:
  
- `fastapi run Tasks.py`
+    `fastapi run Tasks.py`
 
 The API will be available at:
 
-`http://localhost:8000`
+    `http://localhost:8000`
 
 Interactive Swagger API documentation is available at:
 
-`http://localhost:8000/docs`
+    `http://localhost:8000/docs`
 
 
 ## All the endpoints in the documents
@@ -47,6 +46,6 @@ Interactive Swagger API documentation is available at:
 
 
 ### The mortality experiment: 
-    Created all these tasks, but when we run the server again it will be gone because 
+    Created all these tasks, but when we run the server again it will be gone because the current implementation stores tasks in memory, so the data is reset whenever the server restarts as the code runs from the start of the script. When we will add an external database, it safely store our data but will take up space which we have to provide.
 ![alt text](image.png)
 
