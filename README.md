@@ -57,14 +57,13 @@ Created all these tasks, but when we run the server again it will be gone becaus
 
 ## My Prompt
 
-> [!NOTE]
+> [!PROMPT]
 > Create a simple back-end CRUD API in FastAPI without a database where we can create task, read them, delete and update them, make the basic CRUD operation with proper error handling and basic pydantic data validation and return the apporiate status code at the success of the operation. 
 > a in memory dictionary with the id, title and done boolean variable of the task
 > Post request will assign the id number itself with a global count
 > Make two endpoints
 > 1) simple health checkpoint where you return status tell whether the API  is working or not
 > 2) root endpoint which gives the description of the api in JSON format
-
 > Additional endpoints will be
 > 1. search based on a word like returning task with "milk" in them 
 > 2. search based on id 
