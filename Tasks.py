@@ -14,8 +14,15 @@ app = FastAPI()
 
 tasks = {}
 count = 0
-
 @app.get("/")
+def root():
+    return {"message": "Welcome to the Task API!"}
+
+@app.get("/health")
+def health():
+    return {"status": "OK"}
+
+@app.get("/tasks")
 def read():
     return tasks
 
