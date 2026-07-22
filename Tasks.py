@@ -30,7 +30,17 @@ def health():
 def read():
     return tasks
 
-@app.get(/stats)
+@app.get("/stats")
+def stats():
+    total_count = len(tasks)
+    completed_count = sum(1 for task in tasks.values() if task.get("done"))
+    non_completed_count = total_count - completed_count
+    return {
+        "total_count": total_count,
+        "completed_count": completed_count,
+        "non_completed_count": non_completed_count,
+    }
+
 
 @app.post("/tasks", status_code=201)
 def create(task: TaskCreate):
