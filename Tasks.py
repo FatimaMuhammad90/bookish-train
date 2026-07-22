@@ -26,7 +26,7 @@ def health():
 def read():
     return tasks
 
-@app.post("/tasks")
+@app.post("/tasks", status_code=201)
 def create(task: TaskCreate):
     global count
     count += 1
@@ -41,6 +41,8 @@ def create(task: TaskCreate):
 def update(id: int, task: TaskUpdate):
     if id not in tasks:
          raise HTTPException(status_code=404, detail="Task not found")
+    if task.title is None and task.done is None:
+        raise HTTPException(status_code=400, detail="No fields to update")
     if task.title is not None:
         tasks[id]["title"] = task.title
     if task.done is not None:
@@ -48,7 +50,7 @@ def update(id: int, task: TaskUpdate):
     return {"message": f"Updated task with ID {id}."}
 
 
-@app.delete("/tasks/{id}")
+@app.delete("/tasks/{id}", status_code=204)
 def delete(id: int):
     if id not in tasks:
          raise HTTPException(status_code=404, detail="Task not found")
