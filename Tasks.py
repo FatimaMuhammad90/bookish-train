@@ -16,7 +16,9 @@ tasks = {}
 count = 0
 @app.get("/")
 def root():
-    return {"message": "Welcome to the Task API!"}
+    return { "name": "Task API",
+             "version": "1.0",
+             "endpoints": ["/tasks"] }
 
 @app.get("/health")
 def health():
@@ -36,7 +38,13 @@ def create(task: TaskCreate):
         raise HTTPException(status_code=409, detail="Task exists")
     tasks[id] = {"title": title, "done": False}
     return {"message": f"Added {title} to tasks."}
- 
+@app.get("/tasks/{id}")
+def search(id: int):
+    if id not in tasks:
+         raise HTTPException(status_code=404, detail="Task not found")
+    return tasks[id]
+
+
 @app.put("/tasks/{id}")
 def update(id: int, task: TaskUpdate):
     if id not in tasks:
