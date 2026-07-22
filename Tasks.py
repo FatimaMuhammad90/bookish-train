@@ -15,6 +15,10 @@ app = FastAPI()
 tasks = {}
 count = 0
 
+@app.get("/")
+def read():
+    return tasks
+
 @app.post("/tasks")
 def create(task: TaskCreate):
     global count
