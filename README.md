@@ -55,18 +55,28 @@ Created all these tasks, but when we run the server again it will be gone becaus
 
 # AI's Code implementation
 
-`Create a simple back-end CRUD API in FastAPI without a database where we can create task, read them, delete and update them, make the basic CRUD operation with proper error handling and basic pydantic data validation and return the apporiate status code at the success of the operation. 
-a in memory dictionary with the id, title and done boolean variable of the task
-Post request will assign the id number itself with a global count
-Make two endpoints
-1) simple health checkpoint where you return status tell whether the API  is working or not
-2) root endpoint which gives the description of the api in JSON format
-Additional endpoints will be
-1. search based on a word like returning task with "milk" in them 
-2. search based on id 
-3. Stats total count and how many are tasks done or not `
+## My Prompt
+
+> [!NOTE]
+> Create a simple back-end CRUD API in FastAPI without a database where we can create task, read them, delete and update them, make the basic CRUD operation with proper error handling and basic pydantic data validation and return the apporiate status code at the success of the operation. 
+> a in memory dictionary with the id, title and done boolean variable of the task
+> Post request will assign the id number itself with a global count
+> Make two endpoints
+> 1) simple health checkpoint where you return status tell whether the API  is working or not
+> 2) root endpoint which gives the description of the api in JSON format
+
+> Additional endpoints will be
+> 1. search based on a word like returning task with "milk" in them 
+> 2. search based on id 
+> 3. Stats total count and how many are tasks done or not
 
 
+## Insights on the resultant code 
 
+The AI has performed slightly better in using more compact syntax. It has more exact status code, as compared to my own code. It has used different type of dictionary though, like a stack functionality one. It has implemented all the possible data validation too using pydantic, since I explicitly mentioned.
 
+But AI has tendency to overfit to the user's prompt, instead of sending the status code = 200, it has taken my comment literally, and stated the status = healthy. 
+
+## Improvements 
+A place where I can improve my readme is by as providing as much as possible, technical words. So, the AI can better understand and not assume want the user wants.
 
