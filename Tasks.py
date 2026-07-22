@@ -16,9 +16,11 @@ tasks = {}
 count = 0
 @app.get("/")
 def root():
-    return { "name": "Task API",
-             "version": "1.0",
-             "endpoints": ["/tasks"] }
+    return {
+        "name": "Task API",
+        "version": "1.0",
+        "endpoints": ["/tasks"] 
+    }
 
 @app.get("/health")
 def health():
@@ -27,6 +29,8 @@ def health():
 @app.get("/tasks")
 def read():
     return tasks
+
+@app.get(/stats)
 
 @app.post("/tasks", status_code=201)
 def create(task: TaskCreate):
@@ -38,12 +42,20 @@ def create(task: TaskCreate):
         raise HTTPException(status_code=409, detail="Task exists")
     tasks[id] = {"title": title, "done": False}
     return {"message": f"Added {title} to tasks."}
+
 @app.get("/tasks/{id}")
-def search(id: int):
+def search_with_id(id: int):
     if id not in tasks:
          raise HTTPException(status_code=404, detail="Task not found")
     return tasks[id]
 
+@app.get("/tasks/search")
+def search_with_words(search : str):
+    result = {}
+    for id, task in tasks.items():
+        if search.lower() in task["title"].lower():
+            result[id] = task
+    return result
 
 @app.put("/tasks/{id}")
 def update(id: int, task: TaskUpdate):
