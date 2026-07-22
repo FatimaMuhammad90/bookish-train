@@ -57,7 +57,6 @@ Created all these tasks, but when we run the server again it will be gone becaus
 
 ## My Prompt
 
-> [!PROMPT]
 > Create a simple back-end CRUD API in FastAPI without a database where we can create task, read them, delete and update them, make the basic CRUD operation with proper error handling and basic pydantic data validation and return the apporiate status code at the success of the operation. 
 > a in memory dictionary with the id, title and done boolean variable of the task
 > Post request will assign the id number itself with a global count
